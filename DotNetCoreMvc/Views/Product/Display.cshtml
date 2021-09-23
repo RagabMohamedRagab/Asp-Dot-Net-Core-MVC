@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DotNetCoreMvc.Models.Product>
+
+@{
+    ViewData["Title"] = "Display";
+}
+
+<h2 class="text-primary">Display Student</h2>
+<hr />
+<div class="d-flex justify-content-between align-items-center">
+<p>
+    <a asp-action="Create" class="btn btn-danger" style="cursor:pointer;color:#fff">Create New</a>
+</p>
+<div>
+    <a class="btn btn-success"style="cursor:pointer;color:#fff">Search</a>
+    <input type="text" class="form-control d-inline w-auto"   placeholder="###" />
+</div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                <a class="btn btn-primary" style="cursor:pointer;color:#fff" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+
+
+
+
+                <a class="btn btn-danger" style="cursor:pointer;color:#fff" asp-action="Delet" asp-route-empID="@item.Id">Delete</a>
+
+                <a class="btn btn-secondary" style="cursor:pointer;color:#fff" asp-action="Index" asp-route-id="@item.Id">Details</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
